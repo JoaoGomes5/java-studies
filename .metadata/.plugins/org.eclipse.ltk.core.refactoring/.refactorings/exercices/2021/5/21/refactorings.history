@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;EqualsAndHashCode.java&apos; to &apos;exercices/src/arraysAndCollections&apos;&#x0A;- Original project: &apos;exercices&apos;&#x0A;- Destination element: &apos;exercices/src/arraysAndCollections&apos;&#x0A;- Original element: &apos;fundaments.EqualsAndHashCode.java&apos;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;arraysAndCollections" element1="/src&lt;fundaments{EqualsAndHashCode.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1621872062184" units="1" version="1.0"/>
+</session>
