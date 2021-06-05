@@ -1,0 +1,9 @@
+-- Creating table states
+
+create table states (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(45) NOT NULL,
+  initials VARCHAR(2) NOT NULL,
+  region ENUM("Norte", "Centro", "Sul"),
+    -- SQL SERVER CHECK (mycol IN('Useful', 'Useless', 'Unknown'))
+)

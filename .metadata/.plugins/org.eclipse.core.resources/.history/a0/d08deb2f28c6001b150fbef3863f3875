@@ -1,0 +1,29 @@
+# Notes
+
+
+# SQL
+
+## JOIN 
+
+	- We can use alias on select and form statements
+		example:
+		
+		select 
+			s.name as Destrito, 
+		    	c.name as Cidade, 
+		    	region as Região
+		from states s, cities c
+		where s.id = c.state_id
+		
+	- Inner Join - 
+		 
+		 example: 
+		 	
+		 	select 
+				s.name as Destrito, 
+			    c.name as Cidade, 
+			    region as Região
+			from states s
+			inner join cities c 
+				on s.id = c.state_id
+

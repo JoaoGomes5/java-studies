@@ -1,0 +1,15 @@
+# Notes
+
+
+# SQL
+
+## JOIN 
+
+	- We can use alias on select and form statements
+		example:
+		
+		select s.name, c.name , region
+		from states s, cities c
+		where s.id = c.state_id
+		 
+
