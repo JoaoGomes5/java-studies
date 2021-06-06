@@ -1,0 +1,9 @@
+package jdbc;
+
+public class PersonDAO {
+	
+	public void insertPerson(Person person) {
+		
+	}
+	
+}

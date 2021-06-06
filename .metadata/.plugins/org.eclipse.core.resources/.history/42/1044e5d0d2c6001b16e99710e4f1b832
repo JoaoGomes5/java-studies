@@ -1,0 +1,30 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class DAO {
+	
+	private Connection connection;
+	
+	public int insert(String query, Object... atributes) {
+		try {
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+		}
+	}
+	
+	private Connection getConnetion() {
+		try {
+			if (connection != null && !connection.isClosed()) {
+				return connection;
+			}
+		} catch (SQLException e) {
+
+		}
+
+		connection = ConnectionFactory.getConnection();
+		return connection;
+	}
+}

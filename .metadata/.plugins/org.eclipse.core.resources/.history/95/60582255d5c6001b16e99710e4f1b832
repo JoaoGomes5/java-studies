@@ -1,0 +1,19 @@
+package jdbc;
+
+public class DAOTestManyAttributes {
+	public static void main(String[] args) {
+		
+		
+		DAO dao = new DAO();
+		
+		String query = "INSERT INTO persons (name, code) VALUES (?,?)";
+		
+		System.out.println(dao.insert(query, "Daniel Santos", 20));
+		System.out.println(dao.insert(query, "Fernado Rocha", 21));
+		System.out.println(dao.insert(query, "Carla Neves", 22));
+		System.out.println(dao.insert(query, "Joana Dias", 23));
+		
+		dao.closeConnection();
+		
+	}
+}
