@@ -1,0 +1,50 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class DeletePerson {
+	public static void main(String[] args) throws SQLException{
+		Scanner in = new Scanner(System.in);
+
+		System.out.println("Introduza o codigo da pessoa: ");
+		int personCode = in.nextInt();
+
+		String querySelect = "SELECT code, name FROM persons WHERE code = ?";
+		String queryDelete = "DELETE FROM persons WHERE code = ?";
+
+		Connection connection = ConnectionFactory.getConnection();
+		PreparedStatement stmt = connection.prepareStatement(querySelect);
+		stmt.setInt(1, personCode);
+
+		ResultSet result = stmt.executeQuery();
+
+		if (result.next()) {
+			
+			stmt.close();
+
+			stmt = connection.prepareStatement(queryDelete);
+			stmt.setInt(1, personCode);
+			
+			
+			try {
+				stmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			System.out.println("Deleted");
+
+		}
+
+		in.close();
+		stmt.close();
+		connection.close();
+		in.close();
+	}
+	
+}

@@ -1,0 +1,42 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import java.util.Scanner;
+
+public class UpdatePersons {
+	public static void main(String[] args) throws SQLException {
+		String sql = "UPDATE persons SET name = ? where code = ?";
+
+		Scanner in = new Scanner(System.in);
+		
+
+		System.out.println("Introduza o codigo da pessoa: ");
+		int personCode = in.nextLine();
+		
+		
+		
+		String query = "SELECT * FROM persons WHERE code = ?";
+		
+		Connection connection = ConnectionFactory.getConnection();
+		PreparedStatement stmt = connection.prepareStatement(query);
+		stmt.setInt(1, personCode);
+
+		ResultSet result = stmt.executeQuery();
+
+		int code = result.getInt("code");
+		String name = result.getString("name");
+
+		stmt.execute();
+
+		System.out.println(code + " ==> " + name);
+		in.close();
+
+		stmt.close();
+		connection.close();
+		in.close();
+	}
+}

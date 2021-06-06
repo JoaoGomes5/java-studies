@@ -1,0 +1,20 @@
+package jdbc;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class CreatePerson {
+	public static void main(String[] args) throws SQLException {
+		
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("Introduza o nome: ");
+		String name = in.next();
+		
+		String query = "INSERT INTO persons (name) "
+					 + "VALUES ('" + name + "')";
+		
+		System.out.println(query);
+		in.close();
+	}
+}

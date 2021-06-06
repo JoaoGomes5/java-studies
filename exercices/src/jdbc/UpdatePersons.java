@@ -1,0 +1,54 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import java.util.Scanner;
+
+public class UpdatePersons {
+	public static void main(String[] args) throws SQLException {
+
+		Scanner in = new Scanner(System.in);
+
+		System.out.println("Introduza o codigo da pessoa: ");
+		int personCode = in.nextInt();
+
+		String querySelect = "SELECT code, name FROM persons WHERE code = ?";
+		String queryUpdate = "UPDATE persons SET name = ? where code = ?";
+
+		Connection connection = ConnectionFactory.getConnection();
+		PreparedStatement stmt = connection.prepareStatement(querySelect);
+		stmt.setInt(1, personCode);
+
+		ResultSet result = stmt.executeQuery();
+
+		if (result.next()) {
+
+			Person p = new Person(result.getInt(1), result.getString(2));
+
+			System.out.println("O nome atual é: " + p.getName());
+			in.nextLine();
+
+			System.out.println("Introduza o novo nome: ");
+			String newName = in.nextLine();
+
+			stmt.close();
+
+			stmt = connection.prepareStatement(queryUpdate);
+			stmt.setString(1, newName);
+			stmt.setInt(2, personCode);
+
+			stmt.execute();
+
+			System.out.println("Updated");
+
+		}
+
+		in.close();
+		stmt.close();
+		connection.close();
+		in.close();
+	}
+}

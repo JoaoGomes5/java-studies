@@ -1,0 +1,31 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SelectPersons {
+
+	public static void main(String[] args) throws SQLException {
+
+		Connection connection = ConnectionFactory.getConnection();
+
+		String query = "SELECT * FROM persons";
+
+		Statement stmt = connection.createStatement();
+		ResultSet result = stmt.executeQuery(query);
+		
+		List<Person> person = new ArrayList<>();
+		
+		while (result.next()) {
+			
+		}
+
+		stmt.close();
+		connection.close();
+	}
+}

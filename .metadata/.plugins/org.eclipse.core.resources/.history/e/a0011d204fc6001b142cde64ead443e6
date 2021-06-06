@@ -1,0 +1,43 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SelectPersonsByName {
+
+	public static void main(String[] args) throws SQLException {
+		
+		Scanner in = new Scanner(System.in);
+		Connection connection = ConnectionFactory.getConnection();
+		
+		System.out.println("Intoduza a pesquisa: ");
+		String name = in.nextLine();
+		
+		String query = "SELECT * FROM persons LIKE (?)";
+
+		PreparedStatement stmt = connection.prepareStatement(query);
+
+		ResultSet result = stmt.executeQuery(query);
+
+		List<Person> persons = new ArrayList<>();
+
+		while (result.next()) {
+			int code = result.getInt("code");
+			String name = result.getString("name");
+			persons.add(new Person(code, name));
+		}
+
+		for (Person p : persons) {
+			System.out.println(p.getCode() + " => " + p.getName());
+		}
+
+		stmt.close();
+		connection.close();
+	}
+}
